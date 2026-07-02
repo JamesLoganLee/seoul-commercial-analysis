@@ -55,7 +55,7 @@ gu = df.groupby("서비스_업종_코드_명")["객단가"].mean().sort_values(a
 pick = pd.concat([gu.head(5), gu.tail(5)]) / 10000  # 만원 단위
 plt.figure(figsize=(9,5))
 colors = [AMBER]*5 + [TEAL]*5
-sns.barplot(x=pick.values, y=pick.index, palette=colors)
+sns.barplot(x=pick.values, y=pick.index, hue=pick.index, palette=colors, legend=False)
 plt.title("업종별 평균 객단가 — 상위 5 vs 하위 5", fontsize=13, fontweight="bold")
 plt.xlabel("건당 결제액 (만원)"); plt.ylabel("")
 plt.tight_layout(); plt.savefig("charts/adv2_unitprice.png", dpi=130); plt.show()
